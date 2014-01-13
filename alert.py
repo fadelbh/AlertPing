@@ -6,7 +6,7 @@ __author__ = 'Humberto'
 import os, re
 
 print
-#Lista de IP's
+#Tupla de IP's
 ipall = [("FNT-ESCCA-AR-A01", "173.194.42.1"), ("FNT-ESCCA-AR-A02", "173.194.42.2"), ("FNT-ESCCA-AR-A03", "173.194.42.3"),
        ("FNT-ESCCA-AR-A04",	"173.194.42.4"), ("FNT-ESCCA-AR-A05", "173.194.42.5"), ("FNT-ESCCA-AR-A06",	"173.194.42.6"),
        ("FNT-ESCCA-AR-A07",	"173.194.42.7"), ("FNT-ESCCA-AR-A08", "173.194.42.8"), ("FNT-ESCCA-AR-A09",	"173.194.42.9"),
