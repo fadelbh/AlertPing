@@ -1,6 +1,6 @@
 __author__ = 'Humberto'
 
-#!/usr/bin/env python2.7
+#!/usr/bin/env
 # -*- coding: utf-8 -*-
 
 import os, re
