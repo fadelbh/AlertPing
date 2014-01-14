@@ -37,10 +37,13 @@ if check == "1":
     for ip2 in ipall:
         print "Elemento: %s" %ip2[0]
     print
-else:
-    pass
+    check = raw_input("Deseja executar o teste de ping agora? (S/N)")
+while check != "S" and check != "s" and check != "N" and check != "n" and check != "2":
+    print "Opcao invalida"
+    check = raw_input("Digite S para sim ou N para nao:\n")
 #Bloco que executa a verificacao de resposta dos IP's
 #----------------------------------------------------------------------------------
+if check == "S" or check == "s" or check == "2":
     print "=" * 62
     print "              Verificando resposta dos IP's..."
     print "=" * 62
@@ -56,5 +59,8 @@ else:
         else:
             print "-" * 62
             print "%18s | %14s   |    Falha na Conexao  |" %(ip[0], ip[1])
+else:
+    print
+    print "O programa foi encerrado!"
 print "-" * 62
 print
