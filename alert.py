@@ -37,7 +37,7 @@ if check == "1":
     for ip2 in ipall:
         print "Elemento: %s" %ip2[0]
     print
-    check = raw_input("Deseja executar o teste de ping agora? (S/N)")
+    check = raw_input("Deseja executar o teste de ping agora? (S/N):\n")
 while check != "S" and check != "s" and check != "N" and check != "n" and check != "2":
     print "Opcao invalida"
     check = raw_input("Digite S para sim ou N para nao:\n")
