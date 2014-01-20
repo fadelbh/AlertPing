@@ -5,6 +5,7 @@ __author__ = 'Humberto'
 
 import os, re
 
+
 print
 #Tupla de IP's
 ipall = [("FNT-ESCCA-AR-A01", "173.194.42.1"), ("FNT-ESCCA-AR-A02", "173.194.42.2"), ("FNT-ESCCA-AR-A03", "173.194.42.3"),
@@ -20,47 +21,68 @@ ipall.sort() #Ordenando a Tupla
 
 #Bloco para escolha do passo a ser executado
 #----------------------------------------------------------------------------------
-print "Selecione a opcao abaixo \n" \
-      "1 - Verificar os IP's da lista \n" \
-      "2 - Executar o teste de ping na lista"
-check = raw_input("Selecione (1 ou 2):\n"
-                  "")
-while check != "1" and check != "2":
-    print "Opcao invalida"
-    check = raw_input("Selecione (1 - Verificar lista atual | 2 - Executar o teste de ping na lista):\n")
-if check == "1":
+try:
+    print "Selecione a opcao abaixo \n" \
+          "1 - Verificar os IP's da lista \n" \
+          "2 - Executar o teste de ping na lista\n"
+    check = raw_input("Selecione (1 ou 2):\n")
+except KeyboardInterrupt:
     print
-    print "+" * 62
-    print "Ip's a serem verificados."
-    print "+" * 62
+    print "-" * 62
+    print "Programa Interrompido pelo Usuario"
     print
-    for ip2 in ipall:
-        print "Elemento: %s" %ip2[0]
-    print
-    check = raw_input("Deseja executar o teste de ping agora? (S/N):\n")
-while check != "S" and check != "s" and check != "N" and check != "n" and check != "2":
-    print "Opcao invalida"
+    exit()
+try:
+    while check != "1" and check != "2":
+        print "Opcao invalida"
+        check = raw_input("Selecione (1 - Verificar lista atual | 2 - Executar o teste de ping na lista):\n")
+    if check == "1":
+        print
+        print "+" * 62
+        print "Ip's a serem verificados."
+        print "+" * 62
+        print
+        for ip2 in ipall:
+            print "Elemento: %s" %ip2[0]
+        print
+        print "A lista tem %s IP's Cadastrados" %len(ipall)
+        print
+        check = raw_input("Deseja executar o teste de ping agora? (S/N):\n")
+    while check != "S" and check != "s" and check != "N" and check != "n" and check != "2":
+        print "Opcao invalida"
     check = raw_input("Digite S para sim ou N para nao:\n")
+except KeyboardInterrupt:
+    print
+    print "-" * 62
+    print "Programa Interrompido pelo Usuario"
+    print
+    exit()
 #Bloco que executa a verificacao de resposta dos IP's
 #----------------------------------------------------------------------------------
-if check == "S" or check == "s" or check == "2":
-    print "=" * 62
-    print "              Verificando resposta dos IP's..."
-    print "=" * 62
-    print "-" * 62
-    print "     Elemento      |     Ip Fonte     |        Status        |"
-    print "-" * 62
-    for ip in ipall:
-        cmd = "ping -c2 " + ip[1]
-        r = "".join(os.popen(cmd).readlines()) #Executa o comando de ping e captura a linha de resposta
-        if re.search ("64 bytes from", r): #Faz analise da linha capturada anteriormente e informa o status da conexao
-            print "-" * 62
-            print "%18s | %14s   |      Conexao OK      |" %(ip[0], ip[1])
-        else:
-            print "-" * 62
-            print "%18s | %14s   |    Falha na Conexao  |" %(ip[0], ip[1])
-else:
+try:
+    if check == "S" or check == "s" or check == "2":
+        print "=" * 62
+        print "              Verificando resposta dos IP's..."
+        print "=" * 62
+        print "-" * 62
+        print "     Elemento      |     Ip Fonte     |        Status        |"
+        print "-" * 62
+        for ip in ipall:
+            cmd = "ping -c2 " + ip[1]
+            r = "".join(os.popen(cmd).readlines()) #Executa o comando de ping e captura a linha de resposta
+            if re.search ("64 bytes from", r): #Faz analise da linha capturada anteriormente e informa o status da conexao
+                print "-" * 62
+                print "%18s | %14s   |      Conexao OK      |" %(ip[0], ip[1])
+            else:
+                print "-" * 62
+                print "%18s | %14s   |    Falha na Conexao  |" %(ip[0], ip[1])
+    else:
+        print
+        print "O programa foi encerrado!"
+except KeyboardInterrupt:
     print
-    print "O programa foi encerrado!"
+    print "-" * 62
+    print "Programa Interrompido pelo Usuario"
+
 print "-" * 62
 print
